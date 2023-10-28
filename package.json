@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/Tibz-Dankan/near-by-places#readme",
   "dependencies": {
+    "@googlemaps/google-maps-services-js": "^3.3.41",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
