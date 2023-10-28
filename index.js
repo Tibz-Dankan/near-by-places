@@ -13,10 +13,21 @@ app.use(cors());
 app.get("/near-by-places", async (req, res) => {
   console.log("req.query");
   console.log(req.query);
+  // { latitude: '0.3244032', longitude: '32.587776' }
+  const latitude = req.query.latitude;
+  const longitude = req.query.longitude;
+
+  if (!latitude || !longitude) {
+    return res.status(400).json({
+      success: false,
+      message: "Please provide location co-ordinates",
+    });
+  }
 
   const healthFacilities = await client.placesNearby({
     params: {
-      location: "0.3244032, 32.587776",
+      // location: "0.3244032, 32.587776",
+      location: `${latitude}, ${longitude}`,
       key: process.env.GOOGLE_MAPS_API_KEY,
       radius: 1000,
       types: ["hospital", "health"],
